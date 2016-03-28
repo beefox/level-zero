@@ -48,7 +48,6 @@ $(function () {
         // set the game back-ground image
         $('#shoot').css({ background: 'url(../img/giphy.gif)', 'background-size': 'contain' });
 
-
         // set variables
         var bannerWasShown = false;
         var dt = new Date();// Or get the user login date from an HTML element (i.e. hidden input)
@@ -69,17 +68,8 @@ $(function () {
         //var pause = null;
         var mouseX;
         var mouseY;
-
+        var meterAnimated = false;
         var lastPlayerScore = null;
-
-        function mousePage() {
-
-            $(document).mousemove(function (e) {
-                mouseX = e.pageX;
-                mouseY = e.pageY;
-            });
-        }
-
 
         $('.thumbnail').show();
 
@@ -101,17 +91,6 @@ $(function () {
             'box-shadow': '2px 2px 5px 2px grey'
         }
 
-
-        function bannerShow() {
-            $('#shootingInfoContainer').css(bannerStyle);
-            bannerWasShown = true;
-        }
-
-        function bannerHide() {
-            $('#shootingInfoContainer').removeAttr('style');
-            bannerWasShown = false;
-        }
-
         bannerShow();
 
         postInterval = window.setInterval(function () {
@@ -128,76 +107,6 @@ $(function () {
             }
         }, 5 * 1 * 60 * 1000);
 
-
-        // will look for the player in the DOM to clone and give an id
-        function cloneOpponent(myValue) {
-
-            // never did get this working right... couldn't seem to move cloned object...
-            // ended up just using the DOM for this
-
-
-            $('.player').css('max-height', '20%');
-            $('.player').css('max-width', '08%');
-            $('.player').css('bottom', '65%');
-
-            // keeps track of original name
-            var origValue = myValue;
-            // translates to '#myValue'
-            var myValue = '#' + myValue;
-            // looks for '#myValue' on the DOM
-            var orig = $('.game #shooting-range').find(myValue);
-
-
-
-            // translatels to '$myValue'
-            var $user = '$' + origValue;
-            // clones the object
-            var $user = $(orig).clone();
-            // creates a name for the clone. ie..'cloned-myValue'
-            var cloneName = 'cloned-' + origValue;
-            // creates an Id name. ie.. '#cloned-myValue'
-            var myId = "'#cloned-" + origValue; //+ "'"
-            // change the class and id
-            $user.removeAttr('id', 'class');
-            $user.attr('id', cloneName);
-            $user.attr('class', 'clone');
-
-            //add the element to the DOM
-            $('#shooting-range #geek').before($user.clone());
-            /// THIS ISNT WORKING
-            // changes the attribuse before cloning
-            //max-height: 25%; max-width: 10%; bottom: 50%;
-
-            $('#game .clone.player').css('max-height', '01%');
-            $('#game .clone.player').css('max-width', '01%');
-            $('#game .clone.player').css('bottom', '01%');
-
-            //$('.player').css(style);
-            //$('#cloned-goth').css(style);
-        }
-
-        function init() {
-            music = document.getElementById("bgMusic");
-            bowdraw = document.getElementById("bowReadySFX");
-            bowfire = document.getElementById("bowShotSFX");
-            //play = document.getElementById("music-play");
-            //pause = document.getElementById("music-pause");
-
-            $(document).ready(function () {
-
-                $(".thumbnail").hover(function () {
-                    //$(this).fadeToggle('medium');
-                    $('.thumbnail img').css('opacity', '0.1');
-                    $(this).children("video")[0].play();
-                }, function () {
-                    var el = $(this).children("video")[0];
-                    el.pause();
-                    el.currentTime = 0;
-                    $('.thumbnail img').removeAttr("opacity");
-                });
-            });
-        }
-
         //function play() {
         //    music.play();
         //    play.style.color = 'black';
@@ -213,134 +122,6 @@ $(function () {
         init();
         music.play();
 
-        // initialize the hud
-        function hudInit() {
-            $(".thumbnail").hover(function () {
-                $('.thumbnail img').css('opacity', '0.1');
-                $(this).children("video")[0].play();
-            }, function () {
-                var el = $(this).children("video")[0];
-                el.pause();
-                el.currentTime = 0;
-                $('.thumbnail img').removeAttr("opacity");
-            });
-
-            // Weapons and acheivememts menu
-            $("#blue-button").hover(function () {
-
-                //tell to click to open acheivements menu
-                mousePage();
-                mouseX -= 150;
-                $('#weaponsbutton-info').css({ 'bottom': mouseY, 'left': mouseX }).fadeIn('slow');
-                $(self).one('click', function () {
-                    $('#menubar-container')
-                        .animate({ top: '02%', bottom: '02%' }, 'slow', function () {
-                            // make close button appear
-                            $("#close-menu-button").css('opacity', '1.0').fadeIn();
-                        });
-                })
-            }, function () {
-                // hides description on exit hover
-                // unbindes self
-                $(self).unbind("click");
-                $('#weaponsbutton-info').fadeOut('slow');
-
-            });
-
-            $("#close-menu-button").hover(function () {
-                //tell to click to open acheivements menu
-                mousePage();
-                mouseX -= 150;
-                $('#closemenubutton-info').css({ 'top': mouseY, 'left': mouseX }).fadeIn('slow');
-                $(self).one('click', function () {
-                    $('#menubar-container')
-                        .animate({ top: '90%', bottom: '0' }, 'slow', function () {
-                            // make close button disapear 
-                            $('#close-menu-button').fadeOut();
-                        });
-                })
-            }, function () {
-                $(self).unbind("click");
-                // hides description on exit hover
-                $('#closemenubutton-info').fadeOut('slow');
-            });
-
-            // Weapons and acheivememts menu
-            $("#white-button").hover(function () {
-                //tell to click to open acheivements menu
-                mousePage();
-                mouseX -= 150;
-                $('#upgradesbutton-info').css({ 'bottom': mouseY, 'left': mouseX }).fadeIn('slow');
-                $(self).one('click', function () {
-                    $('#menubar-container2')
-                        .animate({ top: '02%', bottom: '02%' }, 'slow', function () {
-                            // make close button appear
-                            $("#close-menu-button2").css('opacity', '1.0').fadeIn();
-                        });
-                })
-            }, function () {
-                // hides description on exit hover
-                $(self).unbind("click");
-                $('#upgradesbutton-info').fadeOut('slow');
-            });
-
-            $("#close-menu-button2").hover(function () {
-                //tell to click to open acheivements menu
-                mousePage();
-                mouseX -= 150;
-                $('#closemenubutton-info').css({ 'top': mouseY, 'left': mouseX }).fadeIn('slow');
-                $(self).one('click', function () {
-                    $('#menubar-container2')
-                        .animate({ top: '0', bottom: '99%' }, 'slow', function () {
-                            // make close button disapear 
-                            $('#close-menu-button2').fadeOut();
-                        });
-                })
-            }, function () {
-                $(self).unbind("click");
-                // hides description on exit hover
-                $('#closemenubutton-info').fadeOut('slow');
-            });
-
-            // What's new menu
-            $("#tv-button").hover(function () {
-                //tell to click to open what's mew menu
-                mousePage();
-                mouseX -= 150;
-                $('#whatsnewbutton-info').css({ 'bottom': mouseY, 'left': mouseX }).fadeIn('slow');
-                $(self).one('click', function () {
-                    $('#menubar-container3')
-                        .show()
-                        .animate({ opacity: '1.0' }, 'slow', function () {
-                            // make close button appear
-                            $("#close-menu-button3").css('opacity', '1.0');
-                        });
-                })
-            }, function () {
-                // hides description on exit hover
-                $(self).unbind("click");
-                $('#whatsnewbutton-info').fadeOut('slow');
-            });
-
-            $("#close-menu-button3").hover(function () {
-                //tell to click for close
-                mousePage();
-                mouseX -= 150;
-                $('#closemenubutton-info').css({ 'top': mouseY, 'left': mouseX }).fadeIn('slow');
-                $(self).one('click', function () {
-                    $('#menubar-container3')
-                        .fadeOut('slow').promise().done(function () {
-                            // make close button disapear 
-                            $('#close-menu-button3').removeAttr('style');
-                        })
-                })
-            }, function () {
-                // hides description on exit hover
-                $(self).unbind("click");
-                $('#closemenubutton-info').fadeOut('slow');
-            });
-        }
-
         // select a player character menu (transition)
         $('#first-button-set').hide();
         $('#myflex').hide(1000);
@@ -351,7 +132,7 @@ $(function () {
             characterSelected = "Geek";
             if (characterSelected == "Geek") {
                 $('.thumbnail').hide();
-                alert('you have selected ' + characterSelected);
+                //alert('you have selected ' + characterSelected);
                 // unhide the cloned goth element
                 $('#cloned-goth').show();
             }
@@ -366,7 +147,7 @@ $(function () {
             characterSelected = "Goth";
             if (characterSelected == "Goth") {
                 $('.thumbnail').hide();
-                alert('you have selected ' + characterSelected);
+                //alert('you have selected ' + characterSelected);
                 // unhide the cloned geek element
                 $('#cloned-geek').show();
             }
@@ -631,6 +412,221 @@ $(function () {
 
         });
 
+        function mousePage() {
+
+            $(document).mousemove(function (e) {
+                mouseX = e.pageX;
+                mouseY = e.pageY;
+            });
+        }
+        
+        function init() {
+            music = document.getElementById("bgMusic");
+            bowdraw = document.getElementById("bowReadySFX");
+            bowfire = document.getElementById("bowShotSFX");
+            //play = document.getElementById("music-play");
+            //pause = document.getElementById("music-pause");
+
+            $(document).ready(function () {
+
+                $(".thumbnail").hover(function () {
+                    //$(this).fadeToggle('medium');
+                    $('.thumbnail img').css('opacity', '0.1');
+                    $(this).children("video")[0].play();
+                }, function () {
+                    var el = $(this).children("video")[0];
+                    el.pause();
+                    el.currentTime = 0;
+                    $('.thumbnail img').removeAttr("opacity");
+                });
+            });
+        }
+
+        function bannerShow() {
+            $('#shootingInfoContainer').css(bannerStyle);
+            bannerWasShown = true;
+        }
+
+        function bannerHide() {
+            $('#shootingInfoContainer').removeAttr('style');
+            bannerWasShown = false;
+        }
+
+        // will look for the player in the DOM to clone and give an id
+        function cloneOpponent(myValue) {
+
+            // never did get this working right... couldn't seem to move cloned object...
+            // ended up just using the DOM for this
+
+
+            $('.player').css('max-height', '20%');
+            $('.player').css('max-width', '08%');
+            $('.player').css('bottom', '65%');
+
+            // keeps track of original name
+            var origValue = myValue;
+            // translates to '#myValue'
+            var myValue = '#' + myValue;
+            // looks for '#myValue' on the DOM
+            var orig = $('.game #shooting-range').find(myValue);
+
+
+
+            // translatels to '$myValue'
+            var $user = '$' + origValue;
+            // clones the object
+            var $user = $(orig).clone();
+            // creates a name for the clone. ie..'cloned-myValue'
+            var cloneName = 'cloned-' + origValue;
+            // creates an Id name. ie.. '#cloned-myValue'
+            var myId = "'#cloned-" + origValue; //+ "'"
+            // change the class and id
+            $user.removeAttr('id', 'class');
+            $user.attr('id', cloneName);
+            $user.attr('class', 'clone');
+
+            //add the element to the DOM
+            $('#shooting-range #geek').before($user.clone());
+            /// THIS ISNT WORKING
+            // changes the attribuse before cloning
+            //max-height: 25%; max-width: 10%; bottom: 50%;
+
+            $('#game .clone.player').css('max-height', '01%');
+            $('#game .clone.player').css('max-width', '01%');
+            $('#game .clone.player').css('bottom', '01%');
+
+            //$('.player').css(style);
+            //$('#cloned-goth').css(style);
+        }
+
+        // initialize the hud
+        function hudInit() {
+            $(".thumbnail").hover(function () {
+                $('.thumbnail img').css('opacity', '0.1');
+                $(this).children("video")[0].play();
+            }, function () {
+                var el = $(this).children("video")[0];
+                el.pause();
+                el.currentTime = 0;
+                $('.thumbnail img').removeAttr("opacity");
+            });
+
+            // Weapons and acheivememts menu
+            $("#blue-button").hover(function () {
+
+                //tell to click to open acheivements menu
+                mousePage();
+                mouseX -= 150;
+                $('#weaponsbutton-info').css({ 'bottom': mouseY, 'left': mouseX }).fadeIn('slow');
+                $(self).one('click', function () {
+                    $('#menubar-container')
+                        .animate({ top: '02%', bottom: '02%' }, 'slow', function () {
+                            // make close button appear
+                            $("#close-menu-button").css('opacity', '1.0').fadeIn();
+                        });
+                })
+            }, function () {
+                // hides description on exit hover
+                // unbindes self
+                $(self).unbind("click");
+                $('#weaponsbutton-info').fadeOut('slow');
+
+            });
+
+            $("#close-menu-button").hover(function () {
+                //tell to click to open acheivements menu
+                mousePage();
+                mouseX -= 150;
+                $('#closemenubutton-info').css({ 'top': mouseY, 'left': mouseX }).fadeIn('slow');
+                $(self).one('click', function () {
+                    $('#menubar-container')
+                        .animate({ top: '90%', bottom: '0' }, 'slow', function () {
+                            // make close button disapear 
+                            $('#close-menu-button').fadeOut();
+                        });
+                })
+            }, function () {
+                $(self).unbind("click");
+                // hides description on exit hover
+                $('#closemenubutton-info').fadeOut('slow');
+            });
+
+            // Weapons and acheivememts menu
+            $("#white-button").hover(function () {
+                //tell to click to open acheivements menu
+                mousePage();
+                mouseX -= 150;
+                $('#upgradesbutton-info').css({ 'bottom': mouseY, 'left': mouseX }).fadeIn('slow');
+                $(self).one('click', function () {
+                    $('#menubar-container2')
+                        .animate({ top: '02%', bottom: '02%' }, 'slow', function () {
+                            // make close button appear
+                            $("#close-menu-button2").css('opacity', '1.0').fadeIn();
+                        });
+                })
+            }, function () {
+                // hides description on exit hover
+                $(self).unbind("click");
+                $('#upgradesbutton-info').fadeOut('slow');
+            });
+
+            $("#close-menu-button2").hover(function () {
+                //tell to click to open acheivements menu
+                mousePage();
+                mouseX -= 150;
+                $('#closemenubutton-info').css({ 'top': mouseY, 'left': mouseX }).fadeIn('slow');
+                $(self).one('click', function () {
+                    $('#menubar-container2')
+                        .animate({ top: '0', bottom: '99%' }, 'slow', function () {
+                            // make close button disapear 
+                            $('#close-menu-button2').fadeOut();
+                        });
+                })
+            }, function () {
+                $(self).unbind("click");
+                // hides description on exit hover
+                $('#closemenubutton-info').fadeOut('slow');
+            });
+
+            // What's new menu
+            $("#tv-button").hover(function () {
+                //tell to click to open what's mew menu
+                mousePage();
+                mouseX -= 150;
+                $('#whatsnewbutton-info').css({ 'bottom': mouseY, 'left': mouseX }).fadeIn('slow');
+                $(self).one('click', function () {
+                    $('#menubar-container3')
+                        .show()
+                        .animate({ opacity: '1.0' }, 'slow', function () {
+                            // make close button appear
+                            $("#close-menu-button3").css('opacity', '1.0');
+                        });
+                })
+            }, function () {
+                // hides description on exit hover
+                $(self).unbind("click");
+                $('#whatsnewbutton-info').fadeOut('slow');
+            });
+
+            $("#close-menu-button3").hover(function () {
+                //tell to click for close
+                mousePage();
+                mouseX -= 150;
+                $('#closemenubutton-info').css({ 'top': mouseY, 'left': mouseX }).fadeIn('slow');
+                $(self).one('click', function () {
+                    $('#menubar-container3')
+                        .fadeOut('slow').promise().done(function () {
+                            // make close button disapear 
+                            $('#close-menu-button3').removeAttr('style');
+                        })
+                })
+            }, function () {
+                // hides description on exit hover
+                $(self).unbind("click");
+                $('#closemenubutton-info').fadeOut('slow');
+            });
+        }
+
         // arm motion after a shot
         function armAfter() {
             $('custom #arm-drawn-change').hide(600).promise().done(function () {
@@ -886,8 +882,6 @@ $(function () {
                 }
             });
         }
-
-        var meterAnimated = false;
 
         function meterAnimation() {
 
