@@ -71,7 +71,6 @@ $(function () {
         var meterAnimated = false;
         var lastPlayerScore = null;
 
-        $('.thumbnail').show();
 
         // style for shoot button
         var style = {
@@ -90,6 +89,8 @@ $(function () {
             height: '200px',
             'box-shadow': '2px 2px 5px 2px grey'
         }
+
+        $('.thumbnail').show();
 
         bannerShow();
 
