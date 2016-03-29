@@ -15,24 +15,6 @@ $(function () {
     $('.thumbnail').hide();
     alert("Welcome to Geek & Goth: Level Zero -- version: ALPHA");
 
-
-    //var xTriggered = 0;
-    //$(document).keyup(function (event) {
-    //    xTriggered++;
-    //    //var msg = "Handler for .keyup() called " + xTriggered + " time(s).";
-    //    //$.print(msg, "html");
-    //    //$.print(event);
-    //    alert(event)
-    //}).keydown(function (event) {
-    //    if (event.which == 'g') {
-    //        event.preventDefault();
-    //    }
-    //});
-
-    //$("#other").click(function () {
-    //    $("#target").keyup();
-    //});
-
     /* ---------------------------
        Geek & Goth: Level Zero 0.1
        --------------------------- */
