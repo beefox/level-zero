@@ -98,6 +98,7 @@ $(function () {
             $('h1, h2, footer, #second-button-set, #goth').hide();
             $('#game, #chest, #third-button-set').show();
             hudInit();
+            repositionArrow(characterSelected);
             shooting();
         });
 
@@ -112,9 +113,10 @@ $(function () {
             $('h1, h2, footer, #second-button-set, #geek').hide();
             $('#third-button-set, #game, #chest').show();
             hudInit();
+            repositionArrow();
             shooting();
         });
-
+        
         // click on the GEEK & GOTH TITLE to open easter egg... happy b-day!
         $('#headertitle').click(function () {
             music.pause();
@@ -585,6 +587,43 @@ $(function () {
             });
         }
 
+        function repositionArrow(player) {            
+            var pos, offset, width, height, setTop, setLeft, adjust = 0;
+
+            if (player === 'Geek') {
+                player = '.ready #geeks-arm';
+                opponent = '.cloned #goths-arm';
+            } else {
+                player = '.ready #goths-arm';
+                opponent = '.cloned #geeks-arm';
+                adjust = .2;
+            }
+
+            // get player
+            width = $(player).width();
+            width /= 2;
+            height = $(player).height();
+            height /= 3;
+            pos = $(player).position();
+            adjust *= height;
+            setTop = pos.top + height - adjust;
+            setLeft = pos.left + width;
+            // set player1
+            $('#player1').css({ top: setTop, left: setLeft });
+
+            // get opponent
+            width = $(opponent).width();
+            width /= 2;
+            height = $(opponent).height();
+            height /= 4;
+            pos = $(opponent).position();
+            setTop = pos.top + height + adjust;
+            setLeft = pos.left + width;
+            // set player1
+            $('#opponent').css({ top: setTop, left: setLeft });
+
+        }
+
         // arm motion after a shot
         function armAfter() {
             $('custom #arm-drawn-change').hide(600).promise().done(function () {
@@ -682,9 +721,6 @@ $(function () {
         }
 
         //maybe a psudo get poi position is a better option for now
-        //var targetRadius = $('.player_stats').width();
-        //var lastPlayerScore = null;
-
         function getPsudoPOIpos() {
 
             function bullsMod3() {
@@ -777,35 +813,13 @@ $(function () {
             }
         }
 
-        //var targetRadius = $('.player_stats').width(),
-        //    markerRadii = {
-        //        bullseye: 40,
-        //        close: 85,
-        //        medium: 120,
-        //        far: 160
-        //    };
-        /////// needs fixed
-        function getPOIpos(markerRadii) {
-            var posX, posY;
-
-            //position a poi and use the while to make sure it meets meets the correct parameters before stopping
-            do {
-                posX = Math.floor(Math.random() * ((targetRadius * 2) - 1));
-                posY = Math.floor(Math.random() * ((targetRadius * 2) - 1));
-            } while (Math.sqrt(Math.pow(targetRadius - posX, 2) + Math.pow(targetRadius - posY, 2)) > targetRadius - markerRadii)
-
-            //return { x: posX, y: posY }
-            $('#poi').attr('style', 'visibility: visible')
-                .css({
-                    'left': posX,
-                    'bottom': posY
-                });
-        }
-
         // method for shooting after the first shot
         function shootingagain() {
             // clear the player and opponent shooting info -- this might be a good spot to update user score when implimented
             $('.shootingInfo span').text('');
+            $(window).resize(function () {
+                repositionArrow(characterSelected);
+            });
             $('#ready-button').one("click", function () {
                 // hide the button and let the user that they can fire
                 readyButtonClicked();
@@ -823,6 +837,9 @@ $(function () {
         // method for shooting the first shot
         function shooting() {
             // click to get ready to shoot
+            $(window).resize(function () {
+                repositionArrow(characterSelected);
+            });
             $('#ready-button').one("click", function () {
                 // check to make sure this is the first time through
                 if (buttonCounter == false) {
@@ -842,20 +859,23 @@ $(function () {
         }
 
         function meterAnimation() {
-
             // get the width of the ball to be animated
             var ballWidth = $('#meter-ball').width();
-
             // get the width of the meter
             var meterWidth = $(window).width() - ballWidth;
             var meterAdj = meterWidth * .205;
             meterWidth = meterWidth - meterAdj;
-
+            // get the position of the meter
             var x = $('#meter').position();
             var meterPosLeft = x.left;
-
             // sets the speed of the animated ball in miliseconds
-            var meterballSpeed = 1700
+            var meterballSpeed = 1700;
+            // check for ball placement
+            if (meterAnimated === false) {
+                meterRight();
+            } else {
+                meterLeft();
+            }
 
             function meterLeft() {
                 $(document).ready(function () {
@@ -885,17 +905,10 @@ $(function () {
                         });
                 });
             }
-            if (meterAnimated === false) {
-                meterRight();
-            } else {
-                meterLeft();
-            }
-
         }
 
         // header & button transition on ready-button click event
         function readyButtonClicked() {
-
             if (buttonCounter == false) {
                 $('#third-button-set h3').text('Impress Robin-Hood with your extra-ordinary precision and you just might win him over. Press the "Shoot" button to fire!');
                 // makes ready button unclickable after the fire button event
