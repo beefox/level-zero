@@ -588,7 +588,7 @@ $(function () {
         }
 
         function repositionArrow(player) {            
-            var pos, offset, width, height, setTop, setLeft, adjust = 0;
+            var pos, offset, width, height, setTop, setLeft, adjust = 0, popTop;
 
             if (player === 'Geek') {
                 player = '.ready #geeks-arm';
@@ -604,12 +604,19 @@ $(function () {
             width /= 2;
             height = $(player).height();
             height /= 3;
+            //alert(height);
             pos = $(player).position();
             adjust *= height;
+            //alert(adjust);
             setTop = pos.top + height - adjust;
             setLeft = pos.left + width;
             // set player1
             $('#player1').css({ top: setTop, left: setLeft });
+            setTop -= (height / 1.6) - (adjust *.8);
+            
+            //alert(setTop + ' ' + adjust);
+            
+            $('#p-target').css({ top: setTop });
 
             // get opponent
             width = $(opponent).width();
@@ -621,6 +628,8 @@ $(function () {
             setLeft = pos.left + width;
             // set player1
             $('#opponent').css({ top: setTop, left: setLeft });
+            setTop -= height;
+            $('#o-target').css({ top: setTop });
 
         }
 
@@ -1005,21 +1014,3 @@ $(function () {
         alert('Sorry... This function has not yet been implimented. Look for it in the release of version 1.0');
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
