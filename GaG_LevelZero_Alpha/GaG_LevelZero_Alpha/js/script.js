@@ -45,8 +45,7 @@ $(function () {
             height: '200%'
         }
 
-        // set the game back-ground image
-        $('#shoot').css({ background: 'url(../img/giphy.gif)', 'background-size': 'contain' });
+
 
         // set variables
         var bannerWasShown = false;
@@ -90,6 +89,8 @@ $(function () {
             'box-shadow': '2px 2px 5px 2px grey'
         }
 
+        // set the game back-ground image
+        $('#shoot').css({ background: 'url(../img/giphy.gif)', 'background-size': 'contain' });
         $('.thumbnail').show();
 
         bannerShow();
