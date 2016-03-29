@@ -39,22 +39,17 @@ $(function () {
 
     // Click the NEW GAME button
     $('#fire').click(function () {
-
+        // set variables
         var gameBgStyle = {
             background: "url('../img/giphy.gif') center)",
             height: '200%'
         }
-
-
-
-        // set variables
         var bannerWasShown = false;
         var dt = new Date();// Or get the user login date from an HTML element (i.e. hidden input)
         var interval;
         var postInterval;
         var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
         //alert(time);
-
         var playerGold = null;
         var weaponSelected = "normal_arrows"
         var characterSelected = null;
@@ -63,20 +58,15 @@ $(function () {
         var bowdraw = null;
         var bowfire = null;
         var pointsPerRound = null;
-        //var play = null;
-        //var pause = null;
         var mouseX;
         var mouseY;
         var meterAnimated = false;
         var lastPlayerScore = null;
-
-
         // style for shoot button
         var style = {
             color: 'red',
             backgroundColor: 'yellow'
         };
-
         var bannerStyle = {
             width: '80%',
             margin: '40px auto 0',
@@ -89,36 +79,22 @@ $(function () {
             'box-shadow': '2px 2px 5px 2px grey'
         }
 
-        // set the game back-ground image
+        // set the game back-ground image setup banner image
         $('#shoot').css({ background: 'url(../img/giphy.gif)', 'background-size': 'contain' });
         $('.thumbnail').show();
-
         bannerShow();
-
         postInterval = window.setInterval(function () {
             var now = new Date();
             if (now.getDate() >= dt.getDate() && bannerWasShown == true) {
                 bannerHide();
             }
         }, 15 * 1000);
-
         interval = window.setInterval(function () {
             var now = new Date();
             if (now.getDate() >= dt.getDate() && bannerWasShown == false) {
                 bannerShow();
             }
         }, 5 * 1 * 60 * 1000);
-
-        //function play() {
-        //    music.play();
-        //    play.style.color = 'black';
-        //    pause.style.color = '#999';
-        //}
-        //function pause() {
-        //    music.pause();
-        //    play.style.color = '#999';
-        //    pause.style.color = 'black';
-        //}
 
         // initialize audio and character video bio's
         init();
@@ -134,7 +110,6 @@ $(function () {
             characterSelected = "Geek";
             if (characterSelected == "Geek") {
                 $('.thumbnail').hide();
-                //alert('you have selected ' + characterSelected);
                 // unhide the cloned goth element
                 $('#cloned-goth').show();
             }
@@ -149,7 +124,6 @@ $(function () {
             characterSelected = "Goth";
             if (characterSelected == "Goth") {
                 $('.thumbnail').hide();
-                //alert('you have selected ' + characterSelected);
                 // unhide the cloned geek element
                 $('#cloned-geek').show();
             }
