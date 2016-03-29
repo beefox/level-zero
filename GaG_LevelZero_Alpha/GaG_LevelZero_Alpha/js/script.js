@@ -44,6 +44,8 @@ $(function () {
         var mouseY;
         var meterAnimated = false;
         var lastPlayerScore = null;
+        var bowdrawPlayerPos = null;
+        var bowdrawOpponentPos = null;
         // style for shoot button
         var style = {
             color: 'red',
@@ -609,7 +611,8 @@ $(function () {
             adjust *= height;
             //alert(adjust);
             setTop = pos.top + height - adjust;
-            setLeft = pos.left + width;
+            setLeft = pos.left + (width * 1.5);
+            bowdrawPlayerPos = pos.left + width;
             // set player1
             $('#player1').css({ top: setTop, left: setLeft });
             setTop -= (height / 1.6) - (adjust *.8);
@@ -625,7 +628,8 @@ $(function () {
             height /= 4;
             pos = $(opponent).position();
             setTop = pos.top + height + adjust;
-            setLeft = pos.left + width;
+            setLeft = pos.left + (width * 1.4);
+            bowdrawOpponentPos = pos.left + width;
             // set player1
             $('#opponent').css({ top: setTop, left: setLeft });
             setTop -= height;
@@ -700,7 +704,6 @@ $(function () {
                 $('#third-button-set h3').text('You have fired at the target!');
                 $('custom #bow-drawn').hide();
                 $('#meter-ball').stop();
-
                 $('.ready #bow-ready, .cloned #bow-ready').show();
                 shootprojectile();
                 bowfire.play();
@@ -838,6 +841,8 @@ $(function () {
                 $('#geeks-arm, #goths-arm, #bow-ready').hide();
                 // Add drawn items
                 $('custom #bow-drawn, custom #arm-drawn-change').show();
+                $('#player1').css({ left: bowdrawPlayerPos });
+                $('#opponent').css({ left: bowdrawOpponentPos });
                 // click to fire pojectile
                 buttonFireEvent();
             });
@@ -858,6 +863,8 @@ $(function () {
                     $('#shoot-button').css(style);
                     $('#geeks-arm, #goths-arm, #bow-ready').hide();
                     $('custom').show();
+                    $('#player1').css({ left: bowdrawPlayerPos });
+                    $('#opponent').css({ left: bowdrawOpponentPos });
                     // click to fire pojectile
                     buttonFireEvent();
                     buttonCounter = true;
