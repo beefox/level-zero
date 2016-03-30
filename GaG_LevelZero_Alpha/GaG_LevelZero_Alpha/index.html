@@ -1,6 +1,12 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" manifest="thisapplication.appcache" lang="en-US">
 <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description"/> 
+    <meta content="" name="author" />
+
     <title>Geek and Goth: Level Zero ALPHA</title>
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/styles.css" />
@@ -21,12 +27,6 @@
             <input type="button" value="Geek" id="geek-button" />
             <input type="button" value="Goth" id="goth-button" />
         </div>
-        <!--<div id="third-button-set" hidden>
-            <h3>Click READY to prepair to shoot!</h3>
-            <input type="button" value="Ready" id="ready-button" />
-            <input type="button" value="Load / Save" id="reset" />
-        </div>-->
-
     </header>
     <div class="thumbnail">
         <video loop preload="auto" poster="../img/Geek_cool.jpg">
@@ -222,7 +222,7 @@
             <!--ROBINS TREASURE-->
             <div id="treasure">
                 <img src="img/treasure_chest.png" alt="treasure" id="chest" class="loot" />
-                <span>00</span>
+                <strong><span>00</span></strong>
             </div>
             <!--BIG TARGET DISPLAYING LOCATION OF ARROW-->
             <div id="big-target">
