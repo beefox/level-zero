@@ -104,6 +104,32 @@ footer div {
     color:white;
 }
 
+video#myBGVideo { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(anything.jpg) no-repeat;
+    background-size: cover; 
+    transition: 1s opacity;
+}
+.stopfade { opacity: .5; }
+
+@media screen and (max-device-width: 800px) {
+    html {
+         background: url(anything.jpg) #000 no-repeat center center fixed;
+    }
+    #bgvid {
+        display: none;
+    }
+}
+
 /* -------------------
    GEEK AND GOTH: Level Zero 0.1
    ------------------- */
@@ -289,7 +315,7 @@ footer div {
 }
 
 #shoot {
-    background: url('../img/LevelZeroBgArt.jpg') center;
+    /*background: url('../img/LevelZeroBgArt.jpg') center;*/
     height: 1080px;
 }
 
