@@ -465,7 +465,17 @@ video#myBGVideo {
     color: #b82f3e;
 }
 
-
+#coin-ani-container {
+    position:absolute;
+    width:25px;
+    height: 30px;
+    display:block;
+    overflow:hidden;
+    z-index: +100;
+    right: 8%;
+    top: 20%;
+    visibility: hidden;
+}
 
 #bullseye {
     display: block;

@@ -46,6 +46,7 @@ $(function () {
         var lastPlayerScore = null;
         var bowdrawPlayerPos = null;
         var bowdrawOpponentPos = null;
+        var cashbonus = null;
         // style for shoot button
         var style = {
             color: 'red',
@@ -83,6 +84,7 @@ $(function () {
         // initialize audio and character video bio's
         init();
         music.play();
+        coinAnimation();
 
         // select a player character menu (transition)
         $('#first-button-set').hide();
@@ -132,6 +134,52 @@ $(function () {
             }
         });
 
+        function coinAnimation() {
+            var imgWidth = 25;
+            var numImgs = 5;
+            var cont = 0;
+            var img = $('#coin-ani-container').find('img');
+
+            var animation = setInterval(moveSprite, 200);
+
+            function moveSprite() {
+                
+                img.css('margin-left', -1 * (cont * imgWidth));
+
+                cont++;
+                if (cont == numImgs) {
+                    clearInterval(animation);
+                    coinAnimation();
+                }
+            }
+        }
+
+        function animateCoin(counter) {
+            var orig = counter;
+            function coinMover(counter) {
+                if (counter < orig) {
+                    cashbonus.currentTime = 0;
+                    cashbonus.play();
+                }
+                $(document).ready(function () {
+                    cashbonus.play();
+                    $('#coin-ani-container')
+                        //.show()
+                        //.fadeToggle()
+                        .css({ 'top': '20%', 'visibility': 'visible' })
+                        .animate({ top: '05%' }, 1000, function () {
+                            $('#coin-ani-container')
+                                .css({ 'top': '20%', 'visibility': 'hidden' });
+                            counter--;
+                            if (counter > 0) {
+                                coinMover(counter);
+                            }
+                        });
+                });
+            }
+            coinMover(counter)
+        }
+
         function mousePage() {
 
             $(document).mousemove(function (e) {
@@ -144,6 +192,7 @@ $(function () {
             music = document.getElementById("bgMusic");
             bowdraw = document.getElementById("bowReadySFX");
             bowfire = document.getElementById("bowShotSFX");
+            cashbonus = document.getElementById("cash-registerSFX");
             //play = document.getElementById("music-play");
             //pause = document.getElementById("music-pause");
 
@@ -450,7 +499,9 @@ $(function () {
                 playerGold += 2;
                 pointsPerRound += 200;
                 $('#treasure span').text(playerGold);
-                alert('BULLSEYE BONUS: +2 GOLD!');
+                //$('#coin-ani-container').fadeToggle();
+                animateCoin(2);
+                //alert('BULLSEYE BONUS: +2 GOLD!');
             }
             return pointsPerRound;
         }
