@@ -313,10 +313,10 @@ video#myBGVideo {
     opacity:0.6;
     
 }
-
+/*background zise or img*/
 #shoot {
     /*background: url('../img/LevelZeroBgArt.jpg') center;*/
-    height: 1080px;
+    height: 960px;
 }
 
 #third-button-set {
@@ -390,9 +390,10 @@ video#myBGVideo {
     display:flex;
     position: fixed;
     display: block;
-    bottom:45%;
+    bottom:25%;
     left: 34%;
     max-height:20%;
+    max-width: 35%;
 }
 
 .player_stats { 
@@ -487,6 +488,8 @@ video#myBGVideo {
     line-height: 40px;    
     width: 40px;/**/
     height: 40px;
+    max-width:06%;
+    max-height:04%;
     visibility: hidden;
     z-index:+1;
 }

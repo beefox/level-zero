@@ -491,24 +491,25 @@ $(function () {
         }
 
         //maybe a psudo get poi position is a better option for now
+        //need to make this so that #poi appears according to the position, width and height of the big target
         function getPsudoPOIpos() {
 
             function bullsMod3() {
                 if (lastPlayerScore % 3 == 1) {
                     $('#poi').css({
                         'left': '48%',
-                        'bottom': '48%'
+                        'bottom': '28%'
                     });
                 } else if (lastPlayerScore % 3 == 2) {
                     $('#poi').css({
                         'left': '42%',
-                        'bottom': '48%'
+                        'bottom': '28%'
                     });
                 } else
                     // %3 == 0
                     $('#poi').css({
                         'left': '48%',
-                        'bottom': '44%'
+                        'bottom': '24%'
                     });
             }
 
@@ -516,18 +517,18 @@ $(function () {
                 if (lastPlayerScore % 3 == 1) {
                     $('#poi').css({
                         'left': '46%',
-                        'bottom': '46%'
+                        'bottom': '26%'
                     });
                 } else if (lastPlayerScore % 3 == 2) {
                     $('#poi').css({
                         'left': '46%',
-                        'bottom': '44%'
+                        'bottom': '24%'
                     });
                 } else
                     // %3 == 0
                     $('#poi').css({
                         'left': '49%',
-                        'bottom': '45%'
+                        'bottom': '25%'
                     });
             }
 
@@ -535,17 +536,17 @@ $(function () {
                 if (lastPlayerScore % 3 == 1) {
                     $('#poi').css({
                         'left': '44%',
-                        'bottom': '49%'
+                        'bottom': '29%'
                     });
                 } else if (lastPlayerScore % 3 == 2) {
                     $('#poi').css({
                         'left': '46%',
-                        'bottom': '45%'
+                        'bottom': '25%'
                     });
                 } else
                     $('#poi').css({
                         'left': '50%',
-                        'bottom': '44%'
+                        'bottom': '24%'
                     });
             }
 
@@ -572,12 +573,12 @@ $(function () {
                     if (lastPlayerScore % 2 === 1) {
                         $('#poi').css({
                             'left': '53%',
-                            'bottom': '56%'
+                            'bottom': '36%'
                         });
                     } else {
                         $('#poi').css({
                             'left': '50%',
-                            'bottom': '52%'
+                            'bottom': '32%'
                         });
                     }
             }
@@ -707,11 +708,11 @@ $(function () {
             }
         }
 
-        function sleep(miliseconds) {
-            var startingTime = new Date().getTime();
-            var stopTime = startingTime + miliseconds;
-            while (stopTime >= new Date().getTime()) { }
-        }
+        //function sleep(miliseconds) {
+        //    var startingTime = new Date().getTime();
+        //    var stopTime = startingTime + miliseconds;
+        //    while (stopTime >= new Date().getTime()) { }
+        //}
 
         // method for animating the projectile and deciding who wins
         function shootprojectile() {
@@ -767,7 +768,7 @@ $(function () {
                     // update the info container with score and place
                     $('#shootingInfoOpponent span').text('You are the ' + place2 + ' and you scored ' + opponentAccuracy + ' points!');
                     // hold the screen for a few seconds and then reset
-                    sleep(3000);
+                    //sleep(3000);
                     $('#player1, #opponent').css('left', '5%');
                 });
             });
