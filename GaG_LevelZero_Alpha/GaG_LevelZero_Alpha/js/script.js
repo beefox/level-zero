@@ -47,6 +47,7 @@ $(function () {
         var bowdrawPlayerPos = null;
         var bowdrawOpponentPos = null;
         var cashbonus = null;
+        var fireworks = null;
         // style for shoot button
         var style = {
             color: 'red',
@@ -193,6 +194,7 @@ $(function () {
             bowdraw = document.getElementById("bowReadySFX");
             bowfire = document.getElementById("bowShotSFX");
             cashbonus = document.getElementById("cash-registerSFX");
+            fireworks = document.getElementById("fireworksSFX");
             //play = document.getElementById("music-play");
             //pause = document.getElementById("music-pause");
 
@@ -501,6 +503,7 @@ $(function () {
                 $('#treasure span').text(playerGold);
                 //$('#coin-ani-container').fadeToggle();
                 animateCoin(2);
+                fireworks.play();
                 //alert('BULLSEYE BONUS: +2 GOLD!');
             }
             return pointsPerRound;
