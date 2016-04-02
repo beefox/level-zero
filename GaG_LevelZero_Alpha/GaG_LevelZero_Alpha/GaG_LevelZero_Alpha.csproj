@@ -76,6 +76,7 @@
     <Content Include="img\catarrows_ammunition.gif" />
     <Content Include="img\coinSpriteSheet150x30.png" />
     <Content Include="img\fireArrows_ammunition.gif" />
+    <Content Include="img\fireworls.gif" />
     <Content Include="img\FX2Logomotion.gif" />
     <Content Include="img\Fx2Logo_lettering.png" />
     <Content Include="img\GaGFBpage_pic2.jpg" />
@@ -125,6 +126,7 @@
     <Content Include="img\WhiteFoxFX2logo.png" />
     <Content Include="img\youknowme.mp4" />
     <Content Include="index.html" />
+    <Content Include="js\jquery-2.2.0.js" />
     <Content Include="js\script.js" />
     <None Include="scripts\_references.js" />
     <Content Include="Web.config" />

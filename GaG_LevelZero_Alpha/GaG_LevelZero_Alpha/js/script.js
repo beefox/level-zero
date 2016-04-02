@@ -22,6 +22,7 @@ $(function () {
     // Click the NEW GAME button
     $('#fire').click(function () {
         // set variables
+        var fireImagePlayed = false;
         var gameBgStyle = {
             background: "url('../img/giphy.gif') center)",
             height: '200%'
@@ -497,14 +498,33 @@ $(function () {
             }
             // check for bullseye
             var safety = windowWidth * .01;
+
+            
+            var fireImage = new Image();
+            fireImage.src = "https://dl.dropboxusercontent.com/u/44685969/fireworls.gif";
+            var fireImage2 = new Image();
+            fireImage2.src = "https://dl.dropboxusercontent.com/u/44685969/Geek%20And%20Goth/img/fireworls.gif";
+
             if (ballLeft <= bullsRight - safety / 2 && ballLeft >= bullsLeft - safety) {
                 playerGold += 2;
                 pointsPerRound += 200;
                 $('#treasure span').text(playerGold);
-                //$('#coin-ani-container').fadeToggle();
                 animateCoin(2);
-                fireworks.play();
-                //alert('BULLSEYE BONUS: +2 GOLD!');
+
+                if (fireImagePlayed === true) {
+                    $('.goodShooting').removeAttr('src');
+                    $('.goodShooting').attr('src', fireImage.src);
+                    fireImagePlayed = false;
+                } else {
+                    $('.goodShooting').removeAttr('src');          
+                    $('.goodShooting').attr('src', fireImage2.src);
+                    fireImagePlayed = true;
+                }
+
+                $('.goodShooting').show().promise().done(function () {
+                    fireworks.play();
+                    $('.goodShooting').hide(7000);          
+                });
             }
             return pointsPerRound;
         }

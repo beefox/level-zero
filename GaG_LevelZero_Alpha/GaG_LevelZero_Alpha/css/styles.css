@@ -570,7 +570,18 @@ input#reset {
     opacity: 1;
 }
 
+#fireworks-animation {
+    display:block;
+    position: absolute;
+    left: 08%; 
+    right: 08%;
+    top: 05%;
+    z-index: +99;
+}
 
+.goodShooting {
+    max-width: 80%;
+}
 
 /* --------------------------
    GOTHESS BIRTHDAY BLAST
