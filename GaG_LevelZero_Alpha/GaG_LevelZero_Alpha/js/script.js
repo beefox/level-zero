@@ -115,7 +115,7 @@ $(function () {
             $(this).css('cursor', 'auto');
         });
 
-        // click on the GEEK VIDEO to select Geek as a playable character
+        // click on the GEEK VIDEO to select Geek as a playable character 
         $('#geekVid').click(function () {
             characterSelected = "Geek";
             if (characterSelected == "Geek") {
