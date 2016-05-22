@@ -154,14 +154,14 @@ $(function () {
 
         // click on the GOTH VIDEO to select Goth as a playable character
         $('#gothVid').click(function () {
-            characterSelected = "Geek";
-            if (characterSelected == "Geek") {
+            characterSelected = "Goth";
+            if (characterSelected == "Goth") {
                 $('.thumbnail').hide();
                 // unhide the cloned goth element
-                $('#cloned-goth').show();
+                $('#cloned-geek').show();
             }
-            $('h1, h2, footer, #second-button-set, #goth').hide();
-            $('#game, #chest, #third-button-set').show();
+            $('h1, h2, footer, #second-button-set, #geek').hide();
+            $('#third-button-set, #game, #chest').show();
             hudInit();
             repositionArrow(characterSelected);
             shooting();
