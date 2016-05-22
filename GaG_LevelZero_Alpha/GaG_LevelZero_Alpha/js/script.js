@@ -108,6 +108,28 @@ $(function () {
             shooting();
         });
 
+        // geekVid hover cursor pointer change
+        $('#geekVid').hover(function () {
+            $(this).css('cursor', 'pointer');
+        }, function() {
+            $(this).css('cursor', 'auto');
+        });
+
+        // click on the GEEK VIDEO to select Geek as a playable character
+        $('#geekVid').click(function () {
+            characterSelected = "Geek";
+            if (characterSelected == "Geek") {
+                $('.thumbnail').hide();
+                // unhide the cloned goth element
+                $('#cloned-goth').show();
+            }
+            $('h1, h2, footer, #second-button-set, #goth').hide();
+            $('#game, #chest, #third-button-set').show();
+            hudInit();
+            repositionArrow(characterSelected);
+            shooting();
+        });
+
         // click on the GOTH BUTTON to select Goth as a playable character
         $('#goth-button').click(function () {
             characterSelected = "Goth";
@@ -118,6 +140,28 @@ $(function () {
             }
             $('h1, h2, footer, #second-button-set, #geek').hide();
             $('#third-button-set, #game, #chest').show();
+            hudInit();
+            repositionArrow(characterSelected);
+            shooting();
+        });
+
+        // gothVid hover cursor pointer change
+        $('#gothVid').hover(function () {
+            $(this).css('cursor', 'pointer');
+        }, function () {
+            $(this).css('cursor', 'auto');
+        });
+
+        // click on the GOTH VIDEO to select Goth as a playable character
+        $('#gothVid').click(function () {
+            characterSelected = "Geek";
+            if (characterSelected == "Geek") {
+                $('.thumbnail').hide();
+                // unhide the cloned goth element
+                $('#cloned-goth').show();
+            }
+            $('h1, h2, footer, #second-button-set, #goth').hide();
+            $('#game, #chest, #third-button-set').show();
             hudInit();
             repositionArrow(characterSelected);
             shooting();
@@ -499,7 +543,7 @@ $(function () {
             // check for bullseye
             var safety = windowWidth * .01;
 
-            
+            // set up duplicate animated gifs for fireworks animation
             var fireImage = new Image();
             fireImage.src = "https://dl.dropboxusercontent.com/u/44685969/fireworls.gif";
             var fireImage2 = new Image();
