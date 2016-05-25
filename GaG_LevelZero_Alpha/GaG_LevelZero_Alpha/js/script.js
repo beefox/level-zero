@@ -13,7 +13,7 @@
 
 $(function () {
     $('.thumbnail').hide();
-    alert("Welcome to Geek & Goth: Level Zero -- version: ALPHA");
+    alert("Welcome to Geek & Goth: Level Zero -- version: ALPHA. This a non-publicated version and may use some temporary place-holders and non-appropriating material.");
 
     /* ---------------------------
        Geek & Goth: Level Zero 0.1
