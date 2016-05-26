@@ -106,7 +106,7 @@ $(function () {
             $('#game, #chest, #third-button-set').show();
             hudInit();
             repositionArrow(characterSelected);
-            if (playerGold << 1 || playerGold == null) {
+            if (playerGold  == null) {
                 robinSFX1.play();
             }
             shooting();            
@@ -123,6 +123,7 @@ $(function () {
         $('#geekVid').click(function () {
             characterSelected = "Geek";
             if (characterSelected == "Geek") {
+                $(".thumbnail").children("video")[0].pause();
                 $('.thumbnail').hide();
                 // unhide the cloned goth element
                 $('#cloned-goth').show();
@@ -131,7 +132,7 @@ $(function () {
             $('#game, #chest, #third-button-set').show();
             hudInit();
             repositionArrow(characterSelected);
-            if (playerGold << 1 || playerGold == null) {
+            if (playerGold == null) {
                 robinSFX1.play();
             }
             shooting();
@@ -149,7 +150,7 @@ $(function () {
             $('#third-button-set, #game, #chest').show();
             hudInit();
             repositionArrow(characterSelected);
-            if (playerGold << 1 || playerGold == null) {
+            if (playerGold == null) {
                 robinSFX1.play();
             }
             shooting();
@@ -166,6 +167,7 @@ $(function () {
         $('#gothVid').click(function () {
             characterSelected = "Goth";
             if (characterSelected == "Goth") {
+                $(".thumbnail").children("video")[1].pause();
                 $('.thumbnail').hide();
                 // unhide the cloned goth element
                 $('#cloned-geek').show();
@@ -174,7 +176,7 @@ $(function () {
             $('#third-button-set, #game, #chest').show();
             hudInit();
             repositionArrow(characterSelected);
-            if (playerGold << 1 || playerGold == null) {
+            if (playerGold == null) {
                 robinSFX1.play();
             }
             shooting();
@@ -258,7 +260,6 @@ $(function () {
             //pause = document.getElementById("music-pause");
 
             $(document).ready(function () {
-
                 $(".thumbnail").hover(function () {
                     //$(this).fadeToggle('medium');
                     $('.thumbnail img').css('opacity', '0.1');
