@@ -350,7 +350,7 @@ $(function () {
 
             // Weapons and acheivememts menu
             $("#blue-button").hover(function () {
-
+                $(this).css('cursor', 'pointer');
                 //tell to click to open acheivements menu
                 mousePage();
                 mouseX -= 150;
@@ -367,10 +367,11 @@ $(function () {
                 // unbindes self
                 $(self).unbind("click");
                 $('#weaponsbutton-info').fadeOut('slow');
-
+                $(this).css('cursor', 'auto');
             });
 
             $("#close-menu-button").hover(function () {
+                $(this).css('cursor', 'pointer');
                 //tell to click to open acheivements menu
                 mousePage();
                 mouseX -= 150;
@@ -386,10 +387,12 @@ $(function () {
                 $(self).unbind("click");
                 // hides description on exit hover
                 $('#closemenubutton-info').fadeOut('slow');
+                $(this).css('cursor', 'auto');
             });
 
             // Weapons and acheivememts menu
             $("#white-button").hover(function () {
+                $(this).css('cursor', 'pointer');
                 //tell to click to open acheivements menu
                 mousePage();
                 mouseX -= 150;
@@ -405,9 +408,11 @@ $(function () {
                 // hides description on exit hover
                 $(self).unbind("click");
                 $('#upgradesbutton-info').fadeOut('slow');
+                $(this).css('cursor', 'auto');
             });
 
             $("#close-menu-button2").hover(function () {
+                $(this).css('cursor', 'pointer');
                 //tell to click to open acheivements menu
                 mousePage();
                 mouseX -= 150;
@@ -423,10 +428,12 @@ $(function () {
                 $(self).unbind("click");
                 // hides description on exit hover
                 $('#closemenubutton-info').fadeOut('slow');
+                $(this).css('cursor', 'auto');
             });
 
             // What's new menu
             $("#tv-button").hover(function () {
+                $(this).css('cursor', 'pointer');
                 //tell to click to open what's mew menu
                 mousePage();
                 mouseX -= 150;
@@ -443,9 +450,11 @@ $(function () {
                 // hides description on exit hover
                 $(self).unbind("click");
                 $('#whatsnewbutton-info').fadeOut('slow');
+                $(this).css('cursor', 'auto');
             });
 
             $("#close-menu-button3").hover(function () {
+                $(this).css('cursor', 'pointer');
                 //tell to click for close
                 mousePage();
                 mouseX -= 150;
@@ -461,6 +470,7 @@ $(function () {
                 // hides description on exit hover
                 $(self).unbind("click");
                 $('#closemenubutton-info').fadeOut('slow');
+                $(this).css('cursor', 'auto');
             });
         }
 
