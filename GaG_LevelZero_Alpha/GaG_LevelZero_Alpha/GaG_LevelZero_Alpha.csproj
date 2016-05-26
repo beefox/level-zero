@@ -117,6 +117,7 @@
     <Content Include="img\mynameisgee.mp4" />
     <Content Include="img\road.jpg" />
     <Content Include="img\robin.png" />
+    <Content Include="img\robins_bigTextbox.png" />
     <Content Include="img\target.png" />
     <Content Include="img\target_big.png" />
     <Content Include="img\ting.png" />

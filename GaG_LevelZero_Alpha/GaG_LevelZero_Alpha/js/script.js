@@ -106,9 +106,7 @@ $(function () {
             $('#game, #chest, #third-button-set').show();
             hudInit();
             repositionArrow(characterSelected);
-            if (playerGold  == null) {
-                robinSFX1.play();
-            }
+            robinIntro();
             shooting();            
         });
 
@@ -132,9 +130,7 @@ $(function () {
             $('#game, #chest, #third-button-set').show();
             hudInit();
             repositionArrow(characterSelected);
-            if (playerGold == null) {
-                robinSFX1.play();
-            }
+            robinIntro();
             shooting();
         });
 
@@ -150,9 +146,7 @@ $(function () {
             $('#third-button-set, #game, #chest').show();
             hudInit();
             repositionArrow(characterSelected);
-            if (playerGold == null) {
-                robinSFX1.play();
-            }
+            robinIntro();
             shooting();
         });
 
@@ -176,9 +170,7 @@ $(function () {
             $('#third-button-set, #game, #chest').show();
             hudInit();
             repositionArrow(characterSelected);
-            if (playerGold == null) {
-                robinSFX1.play();
-            }
+            robinIntro();
             shooting();
         });
         
@@ -194,6 +186,20 @@ $(function () {
                 music = document.getElementById("bgMusic");
             }
         });
+
+
+        function robinIntro() {
+            if (playerGold == null) {
+                robinSFX1.play();
+                $('.robinsTextbox').fadeIn(1000).promise().done(function () {
+                    // hides the game meter
+                    $('.robinsText').fadeIn(1000).promise().done(function () {
+                        $('.robinsText').fadeOut(8000);
+                        $('.robinsTextbox').fadeOut(8000);
+                    });
+                });
+            }
+        }
 
         function coinAnimation() {
             var imgWidth = 25;

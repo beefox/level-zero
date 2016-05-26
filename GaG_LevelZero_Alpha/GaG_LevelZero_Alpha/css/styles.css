@@ -134,6 +134,22 @@ video#myBGVideo {
    GEEK AND GOTH: Level Zero 0.1
    ------------------- */
 
+.robinsText {
+    position:fixed;
+    color: black;
+    font: 48px/60px "Hobo Std";    
+    left: 20%;
+    right: 20%;
+    top: 25%;
+}
+.robinsTextbox {
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    width: 75%;
+    height: 50%;
+}
+
 #weapon-container {
     display:flex;
     /*display:block;*/
