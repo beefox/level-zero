@@ -49,6 +49,7 @@ $(function () {
         var bowdrawOpponentPos = null;
         var cashbonus = null;
         var fireworks = null;
+        var robinSFX1 = null;
         // style for shoot button
         var style = {
             color: 'red',
@@ -105,7 +106,10 @@ $(function () {
             $('#game, #chest, #third-button-set').show();
             hudInit();
             repositionArrow(characterSelected);
-            shooting();
+            if (playerGold << 1 || playerGold == null) {
+                robinSFX1.play();
+            }
+            shooting();            
         });
 
         // geekVid hover cursor pointer change
@@ -127,6 +131,9 @@ $(function () {
             $('#game, #chest, #third-button-set').show();
             hudInit();
             repositionArrow(characterSelected);
+            if (playerGold << 1 || playerGold == null) {
+                robinSFX1.play();
+            }
             shooting();
         });
 
@@ -142,6 +149,9 @@ $(function () {
             $('#third-button-set, #game, #chest').show();
             hudInit();
             repositionArrow(characterSelected);
+            if (playerGold << 1 || playerGold == null) {
+                robinSFX1.play();
+            }
             shooting();
         });
 
@@ -164,6 +174,9 @@ $(function () {
             $('#third-button-set, #game, #chest').show();
             hudInit();
             repositionArrow(characterSelected);
+            if (playerGold << 1 || playerGold == null) {
+                robinSFX1.play();
+            }
             shooting();
         });
         
@@ -240,6 +253,7 @@ $(function () {
             bowfire = document.getElementById("bowShotSFX");
             cashbonus = document.getElementById("cash-registerSFX");
             fireworks = document.getElementById("fireworksSFX");
+            robinSFX1 = document.getElementById("robinhoodIntroDLG");
             //play = document.getElementById("music-play");
             //pause = document.getElementById("music-pause");
 
