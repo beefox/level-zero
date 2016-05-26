@@ -241,8 +241,8 @@ video#myBGVideo {
     text-align:center;
     color:gold;
     font: bold 24px arial, verdana;
-    left: 01%;
-    bottom: 11%;  
+    left: 80%;
+    bottom: 13%;  
     z-index:+1;
     width: 10%;
 }
@@ -403,12 +403,14 @@ video#myBGVideo {
 #robin {
     display: block;
     position: fixed;    
-    left: 90%;
-    bottom: 11%;
-    z-index: +1;
+    left: 1%;
+    z-index: +2;
 }
 
 .npc {
+    position:fixed;
+    bottom: 11%;
+    max-height: 30%;
     max-width:40%;
 }
 
