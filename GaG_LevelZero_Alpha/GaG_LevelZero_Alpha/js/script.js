@@ -50,6 +50,11 @@ $(function () {
         var cashbonus = null;
         var fireworks = null;
         var robinSFX1 = null;
+        var robinSFX2 = null;
+        var robinSFX3 = null;
+        var geekSFX1 = null;
+        var geekSFX2 = null;
+        var introSFX1 = null;
         // style for shoot button
         var style = {
             color: 'red',
@@ -190,14 +195,24 @@ $(function () {
 
         function robinIntro() {
             if (playerGold == null) {
-                robinSFX1.play();
-                $('.robinsTextbox').fadeIn(1000).promise().done(function () {
-                    // hides the game meter
-                    $('.robinsText').fadeIn(1000).promise().done(function () {
-                        $('.robinsText').fadeOut(8000);
-                        $('.robinsTextbox').fadeOut(8000);
+                introSFX1.play();
+                setTimeout(function () {
+                    $('.robinsTextbox').fadeIn(1000).promise().done(function () {
+                        // hides the game meter
+                        $('.robinsText').fadeIn(1000).promise().done(function () {
+                            $('.robinsText').fadeOut(8000);
+                            $('.robinsTextbox').fadeOut(8000);
+                        });
                     });
-                });
+                }, 9000);
+                
+                setTimeout(function () {
+                    geekSFX2.play();
+                }, 8000)
+                setTimeout(function () {
+                    robinSFX1.play();
+                }, 9000);
+                
             }
         }
 
@@ -262,6 +277,11 @@ $(function () {
             cashbonus = document.getElementById("cash-registerSFX");
             fireworks = document.getElementById("fireworksSFX");
             robinSFX1 = document.getElementById("robinhoodIntroDLG");
+            robinSFX2 = document.getElementById("robinHatesGeek");
+            robinSFX3 = document.getElementById("robinHatesGoth");
+            geekSFX1 = document.getElementById("geek-huh");
+            geekSFX2 = document.getElementById("geek-huh-what");
+            introSFX1 = document.getElementById("just-like-my-dad");            
             //play = document.getElementById("music-play");
             //pause = document.getElementById("music-pause");
 
@@ -834,6 +854,21 @@ $(function () {
         // header & button transition on ready-button click event
         function readyButtonClicked() {
             if (buttonCounter == false) {
+                if (characterSelected == "Goth") {
+                    setTimeout(function () {
+                        robinSFX3.play();
+                    }, 2000);
+
+                    
+                } else {
+                    setTimeout(function () {
+                        robinSFX2.play();
+                    }, 2000);
+                    setTimeout(function () {
+                        geekSFX1.play();
+                    }, 3300);
+                    
+                }
                 $('#third-button-set h3').text('Impress Robin-Hood with your extra-ordinary precision and you just might win him over. Press the "Shoot" button to fire!');
                 // makes ready button unclickable after the fire button event
                 $('#ready-button').css({ 'background-color': 'grey' });
