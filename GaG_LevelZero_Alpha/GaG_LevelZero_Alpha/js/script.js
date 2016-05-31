@@ -191,14 +191,67 @@ $(function () {
                 music = document.getElementById("bgMusic");
             }
         });
-
-
+        
+        // audio and text for the start of the game
         function robinIntro() {
             if (playerGold == null) {
+                if (characterSelected == "Geek") {
+                    $('.playerTextbox').fadeIn(500).promise().done(function () {
+                        setTimeout(function () {
+                            $('.playerText').fadeToggle(2000);
+                            $('.playerTextbox').fadeToggle(3000);
+                        }, 1200);
+                        setTimeout(function () {
+                            $('.playerTextbox').css('width', '15%');
+                            $('.opponentTextbox').fadeIn(300).promise().done(function () {
+                                $('.opponentText').fadeIn(300).promise().done(function () {
+                                    setTimeout(function () {
+                                        $('.opponentText').fadeToggle(2000);
+                                        $('.opponentTextbox').fadeToggle(3000);
+                                        $('.playerText').fadeToggle(2000);
+                                        $('.playerTextbox').fadeToggle(3000);
+                                        $('#player-textbox span').text('HUH? WHAT???');
+                                        setTimeout(function () {
+                                            $('.playerText').fadeToggle(2000);
+                                            $('.playerTextbox').fadeToggle(3000);
+                                        }, 2200);
+                                    }, 2200);
+                                })
+                            })
+                        }, 3000);
+                    })
+                } else {
+                    $('#opponent-textbox span').html('ALL BECAUSE YOU WANT TO LIVE A ROCK AND ROLL FANTASY!').hide();
+                    $('#player-textbox span').html("FANTASY! I THOUGHT YOU WAS MY FRIEND, BUT NOW I SEE...<br />YOU'RE JUST LIKE MY DAD!!!").hide();
+                    $('.opponentTextbox').fadeIn(500).promise().done(function () {
+                        $('.opponentText').fadeToggle(300);
+                        setTimeout(function () {
+                            $('.opponentText').fadeToggle(1300);
+                            $('.opponentTextbox').fadeToggle(3000).promise().done(function () {
+                                $('#opponent-textbox span').html('HUH?<br /> WHAT???');
+                            });
+                        }, 1200);
+                        setTimeout(function () {
+                            $('.playerTextbox').fadeIn(300).promise().done(function () {
+                                $('.playerText').fadeIn(300).promise().done(function () {
+                                    setTimeout(function () {
+                                        $('.playerText').fadeToggle(2000);
+                                        $('.playerTextbox').fadeToggle(3000);
+                                        $('.opponentText').fadeToggle(2000);
+                                        $('.opponentTextbox').fadeToggle(3000);
+                                        setTimeout(function () {
+                                            $('.opponentText').fadeToggle(2000);
+                                            $('.opponentTextbox').fadeToggle(3000);
+                                        }, 2200);
+                                    }, 2200);
+                                })
+                            })
+                        }, 3000);
+                    })
+                }
                 introSFX1.play();
                 setTimeout(function () {
                     $('.robinsTextbox').fadeIn(1000).promise().done(function () {
-                        // hides the game meter
                         $('.robinsText').fadeIn(1000).promise().done(function () {
                             $('.robinsText').fadeOut(8000);
                             $('.robinsTextbox').fadeOut(8000);
@@ -208,10 +261,10 @@ $(function () {
                 
                 setTimeout(function () {
                     geekSFX2.play();
-                }, 8000)
+                }, 8300)
                 setTimeout(function () {
                     robinSFX1.play();
-                }, 9000);
+                }, 9300);
                 
             }
         }
@@ -853,18 +906,45 @@ $(function () {
 
         // header & button transition on ready-button click event
         function readyButtonClicked() {
+            //change the textbox styles
+            $('.robinsText').css({ "position": "absolute", "font":'16px/20px "Hobo Std"', "top": "50%", "left": "10%", "right": "75%"});
+            $('.robinsTextbox').css({ "position": "fixed", "top": "48%", "width": "20%", "height": "8%" });
+            // check for which player
             if (buttonCounter == false) {
                 if (characterSelected == "Goth") {
+                    // wait for the bow-stretching sound to end
                     setTimeout(function () {
+                        // playing "I hate you Goth!" sequence
                         robinSFX3.play();
-                    }, 2000);
-
-                    
+                        $('#robins-textbox span').text('I HATE YOU GOTH!');
+                        $('.robinsTextbox').fadeToggle(300).promise().done(function () {
+                            $('.robinsText').fadeToggle(1000).promise().done(function () {
+                                $('.robinsText').fadeToggle(3000);
+                                $('.robinsTextbox').fadeToggle(3000);
+                            });
+                        });
+                    }, 2000);                    
                 } else {
+                    $('#player-textbox span').text('HUH???');
+                    $('.playerTextbox').css('width', '10%');
+                    // wait for the bow-stretching sound to end
                     setTimeout(function () {
+                        // playing I hate you Geek sequence
                         robinSFX2.play();
+                        $('#robins-textbox span').text('I HATE YOU GEEK!');
+                        $('.robinsTextbox').fadeToggle(300).promise().done(function () {
+                            $('.robinsText').fadeToggle(300).promise().done(function () {
+                                $('.robinsText').fadeToggle(3000);
+                                $('.robinsTextbox').fadeToggle(3000);
+                            });
+                        });
                     }, 2000);
                     setTimeout(function () {
+                        $('.playerTextbox').fadeToggle(300);
+                        $('.playerText').fadeToggle(500).promise().done(function () {
+                            $('.playerText').fadeToggle(800);
+                            $('.playerTextbox').fadeToggle(1000);
+                        });
                         geekSFX1.play();
                     }, 3300);
                     

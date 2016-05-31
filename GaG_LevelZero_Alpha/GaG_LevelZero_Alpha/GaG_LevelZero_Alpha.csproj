@@ -120,6 +120,7 @@
     <Content Include="img\robins_bigTextbox.png" />
     <Content Include="img\target.png" />
     <Content Include="img\target_big.png" />
+    <Content Include="img\textbox.png" />
     <Content Include="img\ting.png" />
     <Content Include="img\TMWGAGbillboard1.jpg" />
     <Content Include="img\TMWGAGcover.jpg" />
