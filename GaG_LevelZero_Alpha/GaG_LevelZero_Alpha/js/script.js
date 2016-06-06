@@ -1,7 +1,7 @@
 ﻿// script.js
 
 // TODO
-// 1. MAKE GAME POINTS WORK
+// 1. ADD ROUNDS - 10 shots per round
 // 4. ADD ACHIEVEMENT ITEMS - first item (all players) = fire arrows === target burning down animation
 //**second item geek - acid melting target 
 //**second item goth - cats === cats splatting on target
@@ -24,7 +24,7 @@ $(function () {
         // set variables
         var fireImagePlayed = false;
         var gameBgStyle = {
-            background: "url('../img/giphy.gif') center)",
+            background: "url('img/giphy.gif') center)",
             height: '200%'
         }
         var bannerWasShown = false;
@@ -55,6 +55,10 @@ $(function () {
         var geekSFX1 = null;
         var geekSFX2 = null;
         var introSFX1 = null;
+        var dndSFX = null;
+        var friendsSFX = null;
+        var burntitSFX = null;
+        var dothisSFX = null;
         // style for shoot button
         var style = {
             color: 'red',
@@ -64,7 +68,7 @@ $(function () {
             width: '80%',
             margin: '40px auto 0',
             background: '333',
-            'background-image': 'url(../img/GAG_banner-1.gif)',
+            'background-image': 'url(img/GAG_banner-1.gif)',
             'background-position-x': 'center',
             'background-position-y': 'center',
             'background-size': '100%',
@@ -73,7 +77,7 @@ $(function () {
         }
         $('#myBGVideo').hide();
         // set the game back-ground image setup banner image
-        $('#shoot').css({ background: 'url(../img/giphy.gif)', 'background-size': 'contain' });
+        $('#shoot').css({ background: 'url(img/giphy.gif)', 'background-size': 'contain' });
         $('.thumbnail').show();
         bannerShow();
         postInterval = window.setInterval(function () {
@@ -195,6 +199,7 @@ $(function () {
         // audio and text for the start of the game
         function robinIntro() {
             if (playerGold == null) {
+                // for Geek
                 if (characterSelected == "Geek") {
                     $('.playerTextbox').fadeIn(500).promise().done(function () {
                         setTimeout(function () {
@@ -221,6 +226,7 @@ $(function () {
                         }, 3000);
                     })
                 } else {
+                    // for Goth
                     $('#opponent-textbox span').html('ALL BECAUSE YOU WANT TO LIVE A ROCK AND ROLL FANTASY!').hide();
                     $('#player-textbox span').html("FANTASY! I THOUGHT YOU WAS MY FRIEND, BUT NOW I SEE...<br />YOU'RE JUST LIKE MY DAD!!!").hide();
                     $('.opponentTextbox').fadeIn(500).promise().done(function () {
@@ -334,7 +340,11 @@ $(function () {
             robinSFX3 = document.getElementById("robinHatesGoth");
             geekSFX1 = document.getElementById("geek-huh");
             geekSFX2 = document.getElementById("geek-huh-what");
-            introSFX1 = document.getElementById("just-like-my-dad");            
+            introSFX1 = document.getElementById("just-like-my-dad");
+            dndSFX = document.getElementById("go-play-dnd");
+            friendsSFX = document.getElementById("your-friends");
+            burntitSFX = document.getElementById("you-burnt-it");
+            dothisSFX = document.getElementById("lets-do-this");
             //play = document.getElementById("music-play");
             //pause = document.getElementById("music-pause");
 
@@ -649,9 +659,9 @@ $(function () {
 
             // set up duplicate animated gifs for fireworks animation
             var fireImage = new Image();
-            fireImage.src = "https://dl.dropboxusercontent.com/u/44685969/fireworls.gif";
+            fireImage.src = "img/fireworls.gif";
             var fireImage2 = new Image();
-            fireImage2.src = "https://dl.dropboxusercontent.com/u/44685969/Geek%20And%20Goth/img/fireworls.gif";
+            fireImage2.src = "img/fireworks.gif";
 
             if (ballLeft <= bullsRight - safety / 2 && ballLeft >= bullsLeft - safety) {
                 playerGold += 2;
@@ -972,12 +982,6 @@ $(function () {
             }
         }
 
-        //function sleep(miliseconds) {
-        //    var startingTime = new Date().getTime();
-        //    var stopTime = startingTime + miliseconds;
-        //    while (stopTime >= new Date().getTime()) { }
-        //}
-
         // method for animating the projectile and deciding who wins
         function shootprojectile() {
 
@@ -1021,6 +1025,20 @@ $(function () {
                     $('#shootingInfoPlayer span').text('You are the ' + place + ' and you scored ' + playerAccuracy + ' points!');
                     playerGold += Math.floor((playerAccuracy / 100) / 2);
                     $('#treasure span').text(playerGold);
+                    // comment on score
+                    if (characterSelected=="Geek" && playerAccuracy < 501) {
+                        dndSFX.play();
+                    } else if (characterSelected == "Geek" && playerAccuracy > 1000) {
+                        setTimeout(function () {
+                           friendsSFX.play();
+                        }, 1200)                        
+                    } else if (characterSelected == "Goth" && playerAccuracy < 501) {
+                        burntitSFX.play();
+                    } else if (characterSelected == "Goth" && playerAccuracy > 1000) {
+                        setTimeout(function () {
+                            dothisSFX.play();
+                        }, 1200)
+                    }
                 });
                 // animate opponent projectile
                 $('#opponent').animate({

@@ -57,6 +57,23 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="audio\alrightletsdothis.mp3" />
+    <Content Include="audio\Bow_Fire_Arrow-Stephan_Schutze-2133929391.mp3" />
+    <Content Include="audio\Cha_Ching_Register-Muska666-173262285.mp3" />
+    <Content Include="audio\Fireworks-SoundBible.com-573238425.mp3" />
+    <Content Include="audio\gobacktodnd.mp3" />
+    <Content Include="audio\huh.mp3" />
+    <Content Include="audio\huhwhat.mp3" />
+    <Content Include="audio\i-hate-you-geek.mp3" />
+    <Content Include="audio\i-hate-you-goth.mp3" />
+    <Content Include="audio\ithinkyouburntit.mp3" />
+    <Content Include="audio\justlikemydad.mp3" />
+    <Content Include="audio\Poofy Reel.mp3" />
+    <Content Include="audio\RobinHood_start.mp3" />
+    <Content Include="audio\Stretching Growing-SoundBible.com-2118870171.mp3" />
+    <Content Include="audio\the_beatles-birthday.mp3" />
+    <Content Include="audio\whosyourfriends.mp3" />
+    <Content Include="img\explore\2015-12-02-explore.webm" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -75,7 +92,10 @@
     <Content Include="img\bow_drawn.png" />
     <Content Include="img\catarrows_ammunition.gif" />
     <Content Include="img\coinSpriteSheet150x30.png" />
+    <Content Include="img\explore\2015-12-02-explore-poster.jpg" />
+    <Content Include="img\explore\2015-12-02-explore.mp4" />
     <Content Include="img\fireArrows_ammunition.gif" />
+    <Content Include="img\fireworks.gif" />
     <Content Include="img\fireworls.gif" />
     <Content Include="img\FX2Logomotion.gif" />
     <Content Include="img\Fx2Logo_lettering.png" />
