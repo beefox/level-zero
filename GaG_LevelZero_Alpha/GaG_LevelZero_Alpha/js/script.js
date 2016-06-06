@@ -76,6 +76,7 @@ $(function () {
             'box-shadow': '2px 2px 5px 2px grey'
         }
         $('#myBGVideo').hide();
+
         // set the game back-ground image setup banner image
         $('#shoot').css({ background: 'url(img/giphy.gif)', 'background-size': 'contain' });
         $('.thumbnail').show();

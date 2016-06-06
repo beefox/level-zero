@@ -194,12 +194,9 @@ video#myBGVideo {
 
 #weapon-container {
     display:flex;
-    /*display:block;*/
     position: relative;    
     width: 1550px;
     height: 500px;
-    /*left: 10%;
-    right: 10%;*/
     top: 110px;
     background: wheat;
     opacity:1.0;
@@ -327,8 +324,6 @@ video#myBGVideo {
 
 #close-menu-button {
     position:absolute;
-    /*height: 70px;
-    width: 70px;*/
     right: 01%;
     bottom: 01%;
     z-index:+1;
@@ -337,8 +332,6 @@ video#myBGVideo {
 
 #close-menu-button2 {
     position:absolute;
-    /*height: 70px;
-    width: 70px;*/
     right: 01%;
     bottom: 01%;
     z-index:+1;
@@ -347,8 +340,6 @@ video#myBGVideo {
 
 #close-menu-button3 {
     position:absolute;
-    /*height: 70px;
-    width: 70px;*/
     right: 01%;
     top: 01%;
     z-index:+1;
@@ -371,9 +362,8 @@ video#myBGVideo {
     opacity:0.6;
     
 }
-/*background zise or img*/
+
 #shoot {
-    /*background: url('../img/LevelZeroBgArt.jpg') center;*/
     height: 960px;
 }
 
@@ -484,10 +474,6 @@ video#myBGVideo {
     width: 80%;
     margin: 40px auto 0;
     background: #333;
-    /*background-image: url('../img/GAG_banner-1.gif');
-    background-position-x:center;
-    background-position-y:center;
-    background-size: 100%;*/
     height: 200px;
     box-shadow: 2px 2px 5px 2px grey;
 }
@@ -555,7 +541,7 @@ video#myBGVideo {
     background: orange;
     color:white;
     line-height: 40px;    
-    width: 40px;/**/
+    width: 40px;
     height: 40px;
     max-width:06%;
     max-height:04%;
@@ -582,7 +568,7 @@ video#myBGVideo {
     background: orange;
     color: white;
     line-height: 25px;    
-    width: 25px;/**/
+    width: 25px;
     height: 25px;
     top:06%;
     left:20%;
@@ -595,7 +581,7 @@ video#myBGVideo {
     background: orange;
     color: white;
     line-height: 25px;    
-    width: 25px;/**/
+    width: 25px;
     height: 25px;
     top:06%;
     right:20%;
